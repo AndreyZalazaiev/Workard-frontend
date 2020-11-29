@@ -24,17 +24,22 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RegisterComponent } from './register/register.component';
+import { CompanyComponent } from './company/company.component';
+import {Guard} from './guard/guard';
 
 const appRoutes: Routes = [
   { path: 'login',component: AuthComponent },
-  {path:'register',component:RegisterComponent}]
+  {path:'register',component:RegisterComponent},
+  {path:'',component:CompanyComponent,canActivate:[Guard]},
+  ]
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     MainNavComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompanyComponent,
   ],
   imports: [
     BrowserModule,
