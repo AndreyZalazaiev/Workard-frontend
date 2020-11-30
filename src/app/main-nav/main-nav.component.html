@@ -1,14 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/">Menu</mat-toolbar>
-    <div>
-    <p>{{getUserName()}}</p>
-    <p>{{getUserEmail()}}</p>
-    </div>
+
     <mat-nav-list>
+      <div class="accountInfo">
+        <p mat-list-item>{{getUserName()}}</p>
+        <p mat-list-item>{{getUserEmail()}}</p>
+      </div>
+      <mat-divider></mat-divider>
       <a mat-list-item routerLink="login" *ngIf="!getUserName()">Login</a>
       <a mat-list-item routerLink="register" *ngIf="!getUserName()">Register</a>
       <a mat-list-item routerLink="" *ngIf="getUserName()">Company</a>
@@ -27,6 +29,6 @@
       </button>
       <span (click)="drawer.toggle()">Workard</span>
     </mat-toolbar>
-    <router-outlet ></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
