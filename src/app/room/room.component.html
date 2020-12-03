@@ -1,0 +1,16 @@
+<div *ngIf=(rooms)>
+  <div class="roomTitle">{{selectedCompany.name}}</div>
+  <div class="content">
+    <div *ngFor="let room of rooms; let i=index" class="room">
+      <circle-progress
+        [percent]="findHotSpotbyIdRoom(room.id)"
+        [radius]="60"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [animation]="true"
+        [animationDuration]="300"
+      ></circle-progress>
+      <div>{{room.name}}</div>
+    </div>
+  </div>
+</div>

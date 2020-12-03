@@ -77,8 +77,8 @@ const appRoutes: Routes = [
       radius: 100,
       outerStrokeWidth: 16,
       innerStrokeWidth: 8,
-      outerStrokeColor: "#FF6347",
-      innerStrokeColor: "#32CD32",
+      outerStrokeColor: "#3F51B5",
+      innerStrokeColor: "#FF6E40",
       animationDuration: 300,
       subtitleFontSize:'14',
       subtitle: [

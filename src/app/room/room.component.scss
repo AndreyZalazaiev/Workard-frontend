@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.content {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  border-left: 1px cornflowerblue;
+  margin-left: 15px;
+  margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.room {
+  margin-top: 10px;
+  margin-right: 3%;
+  text-align: center;
+}
+
+.roomTitle {
+
+  font-family: 'Roboto', sans-serif;
+  margin-left: 15px;
+  margin-top: 5px;
+
+}
