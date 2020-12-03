@@ -26,6 +26,9 @@ import { MatListModule } from '@angular/material/list';
 import { RegisterComponent } from './register/register.component';
 import { CompanyComponent } from './company/company.component';
 import {Guard} from './guard/guard';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { RoomComponent } from './room/room.component';
+
 
 const appRoutes: Routes = [
   { path: 'login',component: AuthComponent },
@@ -40,6 +43,7 @@ const appRoutes: Routes = [
     MainNavComponent,
     RegisterComponent,
     CompanyComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,8 +71,20 @@ const appRoutes: Routes = [
     RouterModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+      { enableTracing: false } // <-- debugging purposes only
+    ),
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#FF6347",
+      innerStrokeColor: "#32CD32",
+      animationDuration: 300,
+      subtitleFontSize:'14',
+      subtitle: [
+        "fullness"
+      ],
+    })
 
   ],
   providers: [],

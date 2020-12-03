@@ -26,10 +26,10 @@ export class MainNavComponent implements OnInit {
     return localStorage.getItem('email');
   }
   clearAuthInfo(){
-    this.router.navigateByUrl("/login");
     localStorage.removeItem("username");
     localStorage.removeItem("email");
     localStorage.removeItem("token");
+    this.router.navigateByUrl("/login");
   }
 
 

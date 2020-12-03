@@ -1,12 +1,14 @@
+
 <div class="main">
-<div class="companiesList" >
-  <div class="mat-title, title">Companies list: </div>
-<mat-card  class="company"*ngFor="let company of companies" (click)="idOfSelectedCompany=company.id">
-  <mat-card-title>{{company.name}}</mat-card-title>
-  <mat-card-content>Amount of rooms: {{company.rooms.length}}</mat-card-content>
-</mat-card>
-</div>
-<div class="roomsInfo" *ngIf="idOfSelectedCompany!=null">
-  <div *ngFor="let room of findRooms(idOfSelectedCompany)">{{room.name}}</div>
-</div>
+  <div class="companiesList">
+    <div class="mat-title, title">
+      Companies list:
+    </div>
+    <mat-card class="company" *ngFor="let company of companies" (click)="onCompanyClick(company)">
+      <mat-card-title>{{company.name}}</mat-card-title>
+      <mat-card-content>Amount of rooms: {{company.rooms.length}}</mat-card-content>
+    </mat-card>
+    <img class="mat-icon icon" src="/assets/images/plus_icon.png">
+  </div>
+  <app-room class="roomsInfo"></app-room>
 </div>

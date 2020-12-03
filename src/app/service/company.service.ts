@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {baseUrl} from '../../environments/environment';
 import {Company} from '../../domain/company';
+import {HotSpot} from '../../domain/DTO/hotSpot';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,9 @@ export class CompanyService {
 
   public getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(`${baseUrl}/company`, {headers: this.header});
+  }
+  public getHotSpots(idCompany:number): Observable<HotSpot[]> {
+    return this.http.get<HotSpot[]>(`${baseUrl}/visit/hotspot?idCompany=`+idCompany, {headers: this.header});
   }
 
   public createCompany(Company: Company): Observable<Company> {

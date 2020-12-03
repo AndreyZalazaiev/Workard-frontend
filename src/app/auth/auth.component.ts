@@ -21,6 +21,7 @@ export class AuthComponent implements OnInit {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.value).subscribe(
         data => {
+          localStorage.removeItem('token');
           localStorage.setItem('token', data);
           this.toMainPage();
           this.obtainUserData();
