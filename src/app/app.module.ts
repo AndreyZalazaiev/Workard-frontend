@@ -28,6 +28,11 @@ import { CompanyComponent } from './company/company.component';
 import {Guard} from './guard/guard';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RoomComponent } from './room/room.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CompanyFormComponent } from './company/company-form/company-form.component';
+import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -44,6 +49,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     CompanyComponent,
     RoomComponent,
+    CompanyFormComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,22 +76,25 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatListModule,
     RouterModule,
+    MatDialogModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
+      {enableTracing: false} // <-- debugging purposes only
     ),
     NgCircleProgressModule.forRoot({
-      radius: 100,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      outerStrokeColor: "#3F51B5",
-      innerStrokeColor: "#FF6E40",
+      radius: 50,
+      outerStrokeWidth: 12,
+      innerStrokeWidth: 6,
+      outerStrokeColor: '#3F51B5',
+      innerStrokeColor: '#FF6E40',
       animationDuration: 300,
-      subtitleFontSize:'14',
+      subtitleFontSize: '14',
       subtitle: [
-        "fullness"
+        'fullness'
       ],
-    })
+    }),
+    MatExpansionModule,
+    NgbModule
 
   ],
   providers: [],

@@ -1,4 +1,3 @@
-
 <div class="main">
   <div class="companiesList">
     <div class="mat-title, title">
@@ -6,9 +5,12 @@
     </div>
     <mat-card class="company" *ngFor="let company of companies" (click)="onCompanyClick(company)">
       <mat-card-title>{{company.name}}</mat-card-title>
-      <mat-card-content>Amount of rooms: {{company.rooms.length}}</mat-card-content>
+      <mat-card-content>Amount of rooms: {{company.rooms.length}}
+        <img class="mat-icon icon" style="width: 30px; height: 30px" src="/assets/images/delete_icon.png" (click)="delete(company)">
+
+      </mat-card-content>
     </mat-card>
-    <img class="mat-icon icon" src="/assets/images/plus_icon.png">
+    <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="openDialog()">
   </div>
   <app-room class="roomsInfo"></app-room>
 </div>

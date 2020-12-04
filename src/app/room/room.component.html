@@ -1,16 +1,36 @@
 <div *ngIf=(rooms)>
-  <div class="roomTitle">{{selectedCompany.name}}</div>
+  <div class="roomTitle">Rooms for {{selectedCompany.name}}:</div>
   <div class="content">
+    <div *ngIf="rooms.length==0"> Заглушка отсутствия комнат</div>
     <div *ngFor="let room of rooms; let i=index" class="room">
-      <circle-progress
-        [percent]="findHotSpotbyIdRoom(room.id)"
-        [radius]="60"
-        [outerStrokeWidth]="16"
-        [innerStrokeWidth]="8"
-        [animation]="true"
-        [animationDuration]="300"
-      ></circle-progress>
-      <div>{{room.name}}</div>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div>{{room.name}}</div>
+            </mat-panel-title>
+            <mat-panel-description>
+              Recommended capacity: {{room.recommendedValue}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="expandedContent">
+            <div class="circle">
+              <circle-progress
+                [percent]="findHotSpotbyIdRoom(room.id)"
+                [radius]="60"
+                [animation]="true"
+                [animationDuration]="300"
+              ></circle-progress>
+            </div>
+            <div class="devices">
+              Connected devices сode:
+            <div *ngFor="let device of room.devices">
+              {{device.deviceCode}}
+            </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 </div>

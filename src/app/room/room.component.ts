@@ -18,6 +18,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
   }
   findHotSpotbyIdRoom(idRoom){
+    if(this.hotSpots)
     for(let i=0;i<this.hotSpots.length;i++){
       if(this.hotSpots[i].idRoom==idRoom){
         return this.hotSpots[i].employeesNow/this.hotSpots[i].recommendedValue*100;
