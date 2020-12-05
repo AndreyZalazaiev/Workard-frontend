@@ -33,6 +33,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { CompanyFormComponent } from './company/company-form/company-form.component';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeComponent } from './employee/employee.component';
+import { RoomFormComponent } from './room/room-form/room-form.component';
 
 
 const appRoutes: Routes = [
@@ -50,7 +52,9 @@ const appRoutes: Routes = [
     CompanyComponent,
     RoomComponent,
     CompanyFormComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EmployeeComponent,
+    RoomFormComponent
   ],
   imports: [
     BrowserModule,

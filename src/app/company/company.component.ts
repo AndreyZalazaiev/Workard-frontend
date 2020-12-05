@@ -1,10 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {CompanyService} from '../service/company.service';
 import {Company} from '../../domain/company';
 import {Router} from '@angular/router';
 import {RoomComponent} from '../room/room.component';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {AuthComponent} from '../auth/auth.component';
+import {MatDialog} from '@angular/material/dialog';
 import {CompanyFormComponent} from './company-form/company-form.component';
 import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -18,10 +17,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class CompanyComponent implements OnInit {
   companies: Company[];
 
-  @ViewChild(RoomComponent) child: RoomComponent;
+  @ViewChild(RoomComponent) roomComponent: RoomComponent;
 
   constructor(private companyService: CompanyService, private router: Router, private  dialog: MatDialog, private modalService: NgbModal) {
-
   }
 
   openDialog() {
@@ -30,21 +28,26 @@ export class CompanyComponent implements OnInit {
   }
 
   onCompanyClick(company) {
-    this.child.selectedCompany = company;
+    this.roomComponent.selectedCompany = company;
     this.getHotSpots(company.id);
     this.findRooms(company.id);
 
   }
-
-  findRooms(idCompany) {
-    this.child.rooms = this.companies.filter(c => c.id == idCompany)[0].rooms;
+  loadCompanies() {
+    this.companyService.getCompanies().subscribe(data => {
+      this.companies = data;
+    }, error => console.log(error));
   }
 
-  delete(Company) {
+  findRooms(idCompany:number) {
+    this.roomComponent.rooms = this.companies.filter(c => c.id == idCompany)[0].rooms;
+  }
+
+  delete(Company:Company) {
     this.confirm('Please confirm', 'Do you really want to delete ?')
       .then((confirmed) => {
         if (confirmed) {
-          this.companyService.deleteCompany(Company).subscribe();
+          this.companyService.deleteCompany(Company).subscribe(data => console.log(data));
           this.companies = this.companies.filter(c => c.id != Company.id);
         }
       })
@@ -54,14 +57,16 @@ export class CompanyComponent implements OnInit {
   getHotSpots(idCompany: number) {
     this.companyService.getHotSpots(idCompany)
       .subscribe(data => {
-        this.child.hotSpots = data;
+        this.roomComponent.hotSpots = data;
       });
   }
 
-  loadCompanies() {
+  refresh(content) {
     this.companyService.getCompanies().subscribe(data => {
       this.companies = data;
-    }, error => console.log(error));
+      this.findRooms(this.roomComponent.selectedCompany.id);
+    });
+
   }
 
   ngOnInit(): void {

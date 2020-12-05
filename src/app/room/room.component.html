@@ -33,4 +33,11 @@
       </mat-accordion>
     </div>
   </div>
+  <div class="tools">
+  <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="createRoomDialog()" >
+  </div>
+  <div class="employees">
+  <mat-slide-toggle id="switchEmployees"  (toggleChange)="toggleChanged()">Show employees </mat-slide-toggle>
+  <app-employee></app-employee>
+  </div>
 </div>

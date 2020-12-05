@@ -12,5 +12,6 @@
     </mat-card>
     <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="openDialog()">
   </div>
-  <app-room class="roomsInfo"></app-room>
+  <app-room class="roomsInfo" (refreshCompanyData)="refresh($event)"></app-room>
+
 </div>
