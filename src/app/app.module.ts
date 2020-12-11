@@ -30,13 +30,11 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CompanyFormComponent } from './company/company-form/company-form.component';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeComponent } from './employee/employee.component';
 import { RoomFormComponent } from './room/room-form/room-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {LayoutModule} from '@angular/cdk/layout';
 
 
 const appRoutes: Routes = [
@@ -80,7 +78,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
-    LayoutModule,
     MatSidenavModule,
     MatListModule,
     RouterModule,
@@ -111,7 +108,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       defaultLanguage: 'en',
     }),
     MatExpansionModule,
-    NgbModule,
     MatTabsModule,
 
   ],
