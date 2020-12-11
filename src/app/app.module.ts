@@ -35,6 +35,7 @@ import { RoomFormComponent } from './room/room-form/room-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -109,6 +110,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatExpansionModule,
     MatTabsModule,
+    NgbModule,
 
   ],
   providers: [],
