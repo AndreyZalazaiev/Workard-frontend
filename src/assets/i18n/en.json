@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "main": "Main",
+    "menu": "Menu",
+    "login":"Login",
+    "register": "Register",
+    "company": "Company",
+    "logout": "Log out"
+  },
+  "company": {
+    "companiesList": "Companies list:",
+    "amountText": "Amount of rooms:"
+  },
+  "rooms": {
+    "roomsFor": "Rooms for",
+    "noRoomsEror": "No rooms here(",
+    "recomCapacity": "Recommended capacity:",
+    "conDevices": "Connected devices code:"
+  },
+  "companyForm": {
+
+  }
+}

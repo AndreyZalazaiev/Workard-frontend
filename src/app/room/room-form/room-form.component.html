@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup" (ngSubmit)="createRoom()">
+      <h2>{{title}}</h2>
+      <mat-form-field class="full-width-input">
+      <input matInput placeholder="Cool room" formControlName="roomName" required>
+      <mat-error>
+        Please provide a valid name
+      </mat-error>
+    </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input  type="number" matInput placeholder=0 formControlName="roomSize" required>
+        <mat-error>
+          Please provide a valid name
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <div *ngIf="room">
+    <mat-divider></mat-divider>
+    <form [formGroup]="deviceForm">
+    <h2>Add devices to this room</h2>
+        <div *ngFor="let device of room.devices;let i=index">
+          [{{i}}]:{{device.deviceCode}}
+          <img class="mat-icon icon" src="/assets/images/delete_icon.png" (click)="deleteFromDevices(device)">
+        </div>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="some code..." formControlName="deviceCode">
+      <mat-error>
+        Please provide a valid name
+      </mat-error>
+    </mat-form-field>
+      <button class="mat-raised-button" (click)="pushDevice()">Add device</button>
+  </form>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" class="btn"  [mat-dialog-close]="false"(click)="closeDialog()">Discard</button>
+      <button mat-raised-button color="primary" class="btn" [mat-dialog-close]="true" (click)="createRoom()">Create</button>
+    </div>
+  </mat-card-content>
+</mat-card>

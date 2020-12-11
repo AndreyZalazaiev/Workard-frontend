@@ -1,0 +1,23 @@
+<div class="main">
+<div class="baseInfo">
+  <div class="md-padding" layout="row" layout-fill layout-wrap layout-align="start start">
+  <md-list-item *ngFor="let employee of employees" draggable="true" flex-xs="100" flex-sm="50" flex-md="33"
+                flex-gt-md="25" class="md-3-line content" >
+    <div class="employees">
+    <img src="/assets/images/employee_icon.png" (click)="selectedEmployee=employee" class="md-avatar icon"/>
+    <div class="md-list-item-text">
+      <h3> {{employee.name}} </h3>
+      <h4> {{employee.RFIDtag}} </h4>
+      <p> {{employee.occupation}} </p>
+    </div>
+    <md-divider md-inset></md-divider>
+    </div>
+  </md-list-item>
+  <img class="mat-icon icon" src="/assets/images/plus_icon.png" style="width: 40px;height: 40px;" (click)="createEmployee()">
+<div *ngIf="employees.length==0" class="noEmployeesCase"> No workers in a company, but you can add them now!</div>
+</div>
+</div>
+  <div class="stats" *ngIf="selectedEmployee" >
+
+  </div>
+</div>

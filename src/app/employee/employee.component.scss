@@ -1,0 +1,27 @@
+.employees{
+  margin: 5px;
+  border: orange 1px ;
+}
+.content{
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+}
+.icon{
+  width: 65px;
+  height: 65px;
+}
+.noEmployeesCase{
+  font-family: 'Roboto', sans-serif;
+}
+
+.main{
+  display: flex;
+}
+.baseInfo{
+  width: 20%;
+  background: lightcoral;
+}
+.stats{
+  width: 79%;
+  background: #eeeeee;
+}
