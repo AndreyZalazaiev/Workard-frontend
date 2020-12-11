@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,7 +19,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonModule} from '@angular/material/button';
 import { MainNavComponent } from './main-nav/main-nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RegisterComponent } from './register/register.component';
@@ -38,7 +36,7 @@ import { RoomFormComponent } from './room/room-form/room-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {CdkTableModule} from '@angular/cdk/table';
+import {LayoutModule} from '@angular/cdk/layout';
 
 
 const appRoutes: Routes = [
@@ -89,7 +87,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false} // <-- debugging purposes only
+      { enableTracing: false, relativeLinkResolution: 'legacy' } // <-- debugging purposes only
+ // <-- debugging purposes only
     ),
     NgCircleProgressModule.forRoot({
       radius: 50,
@@ -114,7 +113,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     NgbModule,
     MatTabsModule,
-    CdkTableModule
 
   ],
   providers: [],
