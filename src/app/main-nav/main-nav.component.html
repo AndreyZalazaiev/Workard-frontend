@@ -3,7 +3,7 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar routerLink="/">Menu</mat-toolbar>
+    <mat-toolbar routerLink="/">{{ 'nav.main' | translate}}</mat-toolbar>
 
     <mat-nav-list>
       <div class="accountInfo">
@@ -11,11 +11,27 @@
         <p mat-list-item>{{getUserEmail()}}</p>
       </div>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="login" *ngIf="!getUserName()">Login</a>
-      <a mat-list-item routerLink="register" *ngIf="!getUserName()">Register</a>
-      <a mat-list-item routerLink="" *ngIf="getUserName()">Company</a>
-      <a mat-list-item routerLink="/" *ngIf="getUserName()" (click)="clearAuthInfo()">Log out</a>
+      <a mat-list-item routerLink="login" *ngIf="!getUserName()">{{'nav.menu'|translate}}</a>
+      <a mat-list-item routerLink="register" *ngIf="!getUserName()">{{'nav.register'|translate}}</a>
+      <a mat-list-item routerLink="" *ngIf="getUserName()">{{'nav.company'|translate}}</a>
+      <a mat-list-item routerLink="/" *ngIf="getUserName()" (click)="clearAuthInfo()">{{'nav.logout'|translate}}</a>
     </mat-nav-list>
+    <div class="langMenu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 10px" aria-label="Example icon-button with a menu">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <img src="/assets/images/ukraine_flag.png" (click)="switchLang('uk')" class="mat-icon icon">
+        <span>Українська</span>
+      </button>
+      <button mat-menu-item>
+        <img src="/assets/images/europe_flag.png" (click)="switchLang('en')" class="mat-icon icon" >
+        <span>English</span>
+      </button>
+    </mat-menu>
+    </div>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">

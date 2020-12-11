@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
@@ -35,6 +35,10 @@ import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-di
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeComponent } from './employee/employee.component';
 import { RoomFormComponent } from './room/room-form/room-form.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {CdkTableModule} from '@angular/cdk/table';
 
 
 const appRoutes: Routes = [
@@ -42,7 +46,9 @@ const appRoutes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'',component:CompanyComponent,canActivate:[Guard]},
   ]
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "/assets/i18n/", ".json");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,8 +103,18 @@ const appRoutes: Routes = [
         'fullness'
       ],
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'en',
+    }),
     MatExpansionModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule,
+    CdkTableModule
 
   ],
   providers: [],

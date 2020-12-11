@@ -1,4 +1,4 @@
-export interface Device {
+export class Device {
   deviceCode:string;
   idRoom:number;
 

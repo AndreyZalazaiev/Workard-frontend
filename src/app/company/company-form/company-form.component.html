@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="formGroup" (ngSubmit)="createCompany()">
-      <h2>Create new company!</h2>
+      <h2>{{title}}</h2>
       <mat-form-field class="full-width-input">
         <input matInput placeholder="Cool company" formControlName="companyName" required>
         <mat-error>

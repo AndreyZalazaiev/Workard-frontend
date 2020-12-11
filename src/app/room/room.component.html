@@ -1,43 +1,55 @@
-<div *ngIf=(rooms)>
-  <div class="roomTitle">Rooms for {{selectedCompany.name}}:</div>
-  <div class="content">
-    <div *ngIf="rooms.length==0"> Заглушка отсутствия комнат</div>
-    <div *ngFor="let room of rooms; let i=index" class="room">
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <div>{{room.name}}</div>
-            </mat-panel-title>
-            <mat-panel-description>
-              Recommended capacity: {{room.recommendedValue}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="expandedContent">
-            <div class="circle">
-              <circle-progress
-                [percent]="findHotSpotbyIdRoom(room.id)"
-                [radius]="60"
-                [animation]="true"
-                [animationDuration]="300"
-              ></circle-progress>
-            </div>
-            <div class="devices">
-              Connected devices сode:
-            <div *ngFor="let device of room.devices">
-              {{device.deviceCode}}
-            </div>
-            </div>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Rooms">
+    <div *ngIf=(rooms)>
+      <div class="roomTitle">{{'rooms.roomsFor'|translate}}
+        {{selectedCompany.name}}:
+      </div>
+      <div class="content">
+        <div *ngIf="rooms.length==0">{{'rooms.noRoomsEror'|translate}}</div>
+        <div *ngFor="let room of rooms; let i=index" class="room">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div>{{room.name}}</div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{'rooms.recomCapacity'|translate}}
+                  {{room.recommendedValue}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="expandedContent">
+                <div class="circle">
+                  <circle-progress
+                    [percent]="findHotSpotbyIdRoom(room.id)"
+                    [radius]="60"
+                    [animation]="true"
+                    [animationDuration]="300"
+                  ></circle-progress>
+                </div>
+                <div class="devices">
+                  {{'rooms.conDevices'|translate}}
+                  <div *ngFor="let device of room.devices">
+                    {{device.deviceCode}}
+                  </div>
+                </div>
+                <img class="mat-icon icon" style="width: 30px; height: 30px" src="/assets/images/edit_icon.png"
+                     (click)="createRoomDialog(room)">
+                <img class="mat-icon icon" style="width: 30px; height: 30px" src="/assets/images/delete_icon.png"
+                     (click)="delete(room)">
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+      <div class="tools">
+        <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="createRoomDialog(null)">
+      </div>
     </div>
-  </div>
-  <div class="tools">
-  <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="createRoomDialog()" >
-  </div>
-  <div class="employees">
-  <mat-slide-toggle id="switchEmployees"  (toggleChange)="toggleChanged()">Show employees </mat-slide-toggle>
-  <app-employee></app-employee>
-  </div>
-</div>
+  </mat-tab>
+  <mat-tab label="Workers">
+    <div class="employees">
+      <app-employee *ngIf="selectedCompany" [employees]="selectedCompany.employees"></app-employee>
+    </div>
+  </mat-tab>
+</mat-tab-group>

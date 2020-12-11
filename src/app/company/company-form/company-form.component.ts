@@ -12,6 +12,8 @@ import {Company} from '../../../domain/company';
 })
 export class CompanyFormComponent implements OnInit {
   formGroup: FormGroup;
+  idCompany:number;
+  title:string='Create company';
   constructor(private dialogRef: MatDialogRef<CompanyComponent>,private companyService:CompanyService) { }
 
   ngOnInit(): void {
@@ -27,6 +29,11 @@ export class CompanyFormComponent implements OnInit {
     let c:Company = new Company();
 
     if (this.formGroup.valid) {
+      if(this.idCompany!=null)
+      {
+
+        c.id=this.idCompany;
+      }
       c.name=this.formGroup.controls['companyName'].value;
       this.companyService.createCompany(c).subscribe();
       this.closeDialog();

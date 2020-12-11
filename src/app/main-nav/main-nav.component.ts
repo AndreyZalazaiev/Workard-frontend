@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {Routes, RouterModule, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-nav',
@@ -31,12 +32,19 @@ export class MainNavComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigateByUrl("/login");
   }
+  switchLang(lang){
+    localStorage.setItem('lang',lang);
+    this.translate.use(lang);
+  }
 
-
-  constructor(private breakpointObserver: BreakpointObserver,private router:Router) {
+  constructor(private breakpointObserver: BreakpointObserver,private router:Router,public translate: TranslateService) {
   }
 
   ngOnInit(): void {
+    let lang =localStorage.getItem('lang')
+    if(lang.length>0){
+      this.translate.use(lang);
+    }
   }
 
 }

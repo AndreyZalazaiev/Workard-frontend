@@ -26,6 +26,13 @@ export class CompanyComponent implements OnInit {
     this.dialog.open(CompanyFormComponent);
     this.dialog.afterAllClosed.subscribe(data => this.loadCompanies());
   }
+  updateDialog(idCompany) {
+   let dialogRef = this.dialog.open(CompanyFormComponent);
+    dialogRef.componentInstance.idCompany = idCompany;
+    dialogRef.componentInstance.title="Update info";
+
+    this.dialog.afterAllClosed.subscribe(data => this.loadCompanies());
+  }
 
   onCompanyClick(company) {
     this.roomComponent.selectedCompany = company;

@@ -1,13 +1,21 @@
 <div class="main">
   <div class="companiesList">
     <div class="mat-title, title">
-      Companies list:
+      <mat-toolbar-row>
+        <mat-icon style="margin-bottom: 20px">home</mat-icon>
+        <H1>  {{'company.companiesList'|translate}}</H1>
+
+      </mat-toolbar-row>
+      <mat-divider></mat-divider>
     </div>
     <mat-card class="company" *ngFor="let company of companies" (click)="onCompanyClick(company)">
       <mat-card-title>{{company.name}}</mat-card-title>
-      <mat-card-content>Amount of rooms: {{company.rooms.length}}
-        <img class="mat-icon icon" style="width: 30px; height: 30px" src="/assets/images/delete_icon.png" (click)="delete(company)">
-
+      <mat-card-content>
+        {{'company.amountText'|translate}} {{company.rooms.length}}
+        <div class="tools">
+        <img class="mat-icon icon" src="/assets/images/edit_icon.png" (click)="updateDialog(company.id)">
+          <img class="mat-icon icon" src="/assets/images/delete_icon.png" (click)="delete(company)">
+        </div>
       </mat-card-content>
     </mat-card>
     <img class="mat-icon icon" src="/assets/images/plus_icon.png" (click)="openDialog()">
