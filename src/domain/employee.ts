@@ -1,9 +1,10 @@
 import {Visit} from './visit';
 
-export interface Employee {
+export class Employee {
+  id:number;
   name:string;
   occupation:string;
-  RFIDtag:string;
+  rfidtag:string;
   idCompany:number;
   visits:Visit[];
 }

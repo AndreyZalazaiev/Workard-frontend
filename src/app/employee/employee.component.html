@@ -6,9 +6,9 @@
     <div class="employees">
     <img src="/assets/images/employee_icon.png" (click)="selectedEmployee=employee" class="md-avatar icon"/>
     <div class="md-list-item-text">
-      <h3> {{employee.name}} </h3>
-      <h4> {{employee.RFIDtag}} </h4>
-      <p> {{employee.occupation}} </p>
+      <h3 class="employeeDesc"> {{employee.name}} </h3>
+      <h4 class="employeeRFID"> {{employee.rfidtag}} </h4>
+      <p class="employeeOccupation"> {{employee.occupation}} </p>
     </div>
     <md-divider md-inset></md-divider>
     </div>
@@ -17,67 +17,21 @@
 <div *ngIf="employees.length==0" class="noEmployeesCase"> No workers in a company, but you can add them now!</div>
 </div>
 </div>
-  <div class="stats" *ngIf="selectedEmployee" >
-    <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
+  <div class="stats" *ngIf="selectedEmployee && employees.length>0" >
+
+    <table class="table" >
+      <thead class="black white-text head">
+      <th *ngFor="let head of headElements" scope="col">{{head}}</th>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      <tr mdbTableCol *ngFor="let el of selectedEmployee.visits ;let i=index" >
+        <div *ngIf="i>selectedEmployee.visits.length-5 " >
+        <td >{{obtainRoomNameById(el.idRoom)}}</td>
+        <td>{{el.entryTime}}</td>
+        <td>{{el.exitTime}}</td>
+        </div>
       </tbody>
     </table>
 
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      </tbody>
-    </table>
   </div>
 </div>

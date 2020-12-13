@@ -15,7 +15,10 @@
     "roomsFor": "Rooms for",
     "noRoomsEror": "No rooms here(",
     "recomCapacity": "Recommended capacity:",
-    "conDevices": "Connected devices code:"
+    "conDevices": "Connected devices code:",
+    "Recommendations": "Recommendations",
+    "Workers": "Workers",
+    "Rooms": "Rooms"
   },
   "companyForm": {
 

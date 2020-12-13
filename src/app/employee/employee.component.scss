@@ -1,9 +1,12 @@
+
+@import "~ngx-easy-table/style.scss";
+
+
 .employees{
   margin: 5px;
   border: orange 1px ;
 }
 .content{
-  display: flex;
   font-family: 'Roboto', sans-serif;
 }
 .icon{
@@ -11,17 +14,38 @@
   height: 65px;
 }
 .noEmployeesCase{
-  font-family: 'Roboto', sans-serif;
+
 }
 
 .main{
+width: 100%;
   display: flex;
 }
-.baseInfo{
-  width: 20%;
-  background: lightcoral;
+.employeeDesc{
+  font-family: 'Roboto', sans-serif;
+}
+.employeeRFID{
+  font-family: 'Roboto', sans-serif;
+  background: cornflowerblue;
+  color: #eeeeee;
+}
+.employeeRFID{
+  font-family: 'Roboto', sans-serif;
 }
 .stats{
-  width: 79%;
-  background: #eeeeee;
+  width: 76%;
+}
+.baseInfo{
+  width: 24%;
+}
+
+
+.table td, .table th {
+  min-width: 100px;
+}
+
+.head{
+  width: 33%;
+  display: flex;
+  justify-content: space-between;
 }

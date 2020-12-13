@@ -36,6 +36,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {TableModule} from 'ngx-easy-table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { EmployeeFormComponent } from './employee/employee-form/employee-form.component';
 
 
 const appRoutes: Routes = [
@@ -57,7 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CompanyFormComponent,
     ConfirmationDialogComponent,
     EmployeeComponent,
-    RoomFormComponent
+    RoomFormComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -85,8 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false, relativeLinkResolution: 'legacy' } // <-- debugging purposes only
- // <-- debugging purposes only
+      {enableTracing: false, relativeLinkResolution: 'legacy'} // <-- debugging purposes only
+      // <-- debugging purposes only
     ),
     NgCircleProgressModule.forRoot({
       radius: 50,
@@ -111,6 +115,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatTabsModule,
     NgbModule,
+    TableModule,
+    MatPaginatorModule,
 
   ],
   providers: [],
