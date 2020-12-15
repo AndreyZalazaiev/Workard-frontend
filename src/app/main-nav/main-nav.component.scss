@@ -21,8 +21,12 @@ mat-drawer-container { flex: 1 1 auto; }
 }
 .accountInfo{
   padding-left: 15px;
-  font-style: italic;
-
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: -5px 10px 10px 0px;
 }
 .icon{
   width: 60px;

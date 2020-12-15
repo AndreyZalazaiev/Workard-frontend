@@ -53,12 +53,16 @@
                     [idCompany]="selectedCompany.id"></app-employee>
     </div>
   </mat-tab>
+
+
   <mat-tab label="{{'rooms.Recommendations'|translate}}">
-    <mat-label class="mat-h1 text">{{'rooms.currentRecommend'|translate}}: </mat-label>
-    <div class="Recommendations" *ngIf="selectedCompany">
+    <div class="recommendations" *ngIf="selectedCompany">
+      <mat-label class="mat-h1 text"
+                 *ngIf="selectedCompany.recommendations.length>0">{{'rooms.currentRecommend'|translate}}:
+      </mat-label>
       <div *ngIf="selectedCompany.recommendations.length==0">
-      <p class="mat-h2 text">{{'rooms.noRecommend'|translate}}</p>
-        <button mat-raised-button color="primary">{{'rooms.generateBtn'|translate}}</button>
+        <p class="mat-h2 text">{{'rooms.noRecommend'|translate}}</p>
+        <button mat-raised-button color="primary" (click)="generateRecom()">{{'rooms.generateBtn'|translate}}</button>
       </div>
       <div *ngFor="let rec of selectedCompany.recommendations">
         <div>

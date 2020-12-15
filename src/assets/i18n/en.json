@@ -5,7 +5,8 @@
     "login": "Login",
     "register": "Register",
     "company": "Company",
-    "logout": "Log out"
+    "logout": "Log out",
+    "loggedAs": "Logged as"
   },
   "company": {
     "companiesList": "Companies list:",

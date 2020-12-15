@@ -11,7 +11,7 @@
     </form>
     <div class="buttons">
     <button mat-raised-button color="primary" class="btn"  [mat-dialog-close]="false"(click)="closeDialog()">Discard</button>
-    <button mat-raised-button color="primary" class="btn" [mat-dialog-close]="true" (click)="createCompany()">Create</button>
+    <button mat-raised-button color="primary" class="btn" [mat-dialog-close]="true" (click)="createCompany()">{{textOnBtn}}</button>
     </div>
   </mat-card-content>
 </mat-card>

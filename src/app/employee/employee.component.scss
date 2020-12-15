@@ -42,15 +42,21 @@
   border-right: lightcoral;
 }
 .workerDesc{
-  margin-top: 20px;
   font-family: 'Roboto', sans-serif;
-  border: #aaaaaa 1px;
+  padding: 2px;
 }
 
 .table td, .table th {
   min-width: 100px;
 }
-
+.employeeDesc{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+.iconDesc{
+  margin-top: 10px;
+  vertical-align: -5px;
+}
 .head{
   width: 33%;
   display: flex;

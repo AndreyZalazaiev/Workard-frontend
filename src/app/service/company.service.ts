@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {baseUrl} from '../../environments/environment';
 import {Company} from '../../domain/company';
 import {HotSpot} from '../../domain/DTO/hotSpot';
+import {Recommendation} from '../../domain/recommendation';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ export class CompanyService {
       return '?lang='+localStorage.getItem('lang');
     }
     return '?lang=en'
+  }
+
+  public generateRecom(selectedCompany:Company): Observable<Recommendation[]> {
+    return this.http.get<Recommendation[]>(`${baseUrl}/recommendation?idCompany=`+selectedCompany.id, {headers: this.header});
   }
 }

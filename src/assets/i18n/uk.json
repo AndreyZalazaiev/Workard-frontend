@@ -5,7 +5,8 @@
     "login":"Увійти",
     "register": "Зареєструватися",
     "company": "Компанії",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "loggedAs": "Увiйшли як"
   },
   "company": {
     "companiesList": "Список компаній:",

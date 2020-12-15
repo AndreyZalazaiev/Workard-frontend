@@ -6,6 +6,8 @@ import {EmployeeComponent} from '../employee/employee.component';
 import {MatDialog} from '@angular/material/dialog';
 import {RoomFormComponent} from './room-form/room-form.component';
 import {RoomService} from '../service/room.service';
+import {CompanyService} from '../service/company.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-room',
@@ -19,7 +21,7 @@ export class RoomComponent {
   @ViewChild(EmployeeComponent) employeeComp: EmployeeComponent;
   @Output() refreshCompanyData = new EventEmitter<String>();
 
-  constructor(private  dialog: MatDialog, private  roomService: RoomService) {
+  constructor(private  dialog: MatDialog, private  roomService: RoomService,private companyService:CompanyService,private _snackBar:MatSnackBar) {
   }
 
   createRoomDialog(room:Room) {
@@ -47,5 +49,19 @@ export class RoomComponent {
       }
     }
     return 0;
+  }
+  generateRecom(){
+    if(this.selectedCompany.recommendations.length==0)
+    this.companyService.generateRecom(this.selectedCompany).subscribe(data=>{
+      if(data.length==0){
+        this.openSnackBar("No data found")
+      }
+      this.selectedCompany.recommendations=data
+    });
+  }
+  openSnackBar(text) {
+    this._snackBar.open(text, '', {
+      duration: 6000,
+    });
   }
 }

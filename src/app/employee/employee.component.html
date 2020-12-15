@@ -16,8 +16,14 @@
       </mat-form-field>
 
       <div class="workerDesc" *ngIf="selectedEmployee && employees.length>0">
-        <p>{{selectedEmployee.occupation}}</p>
-        <p>{{selectedEmployee.rfidtag}}</p>
+        <div>
+          <mat-icon class="iconDesc"> work</mat-icon>
+          <span class="employeeDesc">{{selectedEmployee.occupation}}</span>
+        </div>
+        <div>
+          <mat-icon class="iconDesc">code</mat-icon>
+          <span class="employeeDesc">{{selectedEmployee.rfidtag}}</span>
+        </div>
       </div>
       <p></p>
       <img class="mat-icon icon" src="/assets/images/plus_icon.png" style="width: 40px;height: 40px;" (click)="createEmployee()">

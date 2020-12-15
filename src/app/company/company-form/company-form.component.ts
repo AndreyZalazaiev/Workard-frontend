@@ -4,6 +4,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {CompanyComponent} from '../company.component';
 import {CompanyService} from '../../service/company.service';
 import {Company} from '../../../domain/company';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-company-form',
@@ -13,6 +14,7 @@ import {Company} from '../../../domain/company';
 export class CompanyFormComponent implements OnInit {
   formGroup: FormGroup;
   idCompany:number;
+  textOnBtn:string;
   title:string='Create company';
   constructor(private dialogRef: MatDialogRef<CompanyComponent>,private companyService:CompanyService) { }
 
@@ -20,6 +22,10 @@ export class CompanyFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       companyName: new FormControl('', [Validators.required])
   });
+    if(this.idCompany!=null){
+      this.textOnBtn="Update";
+    }
+    else this.textOnBtn="Create";
   }
 
   closeDialog(){
@@ -31,7 +37,6 @@ export class CompanyFormComponent implements OnInit {
     if (this.formGroup.valid) {
       if(this.idCompany!=null)
       {
-
         c.id=this.idCompany;
       }
       c.name=this.formGroup.controls['companyName'].value;

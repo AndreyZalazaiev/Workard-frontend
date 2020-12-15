@@ -29,12 +29,12 @@
         Please provide a valid name
       </mat-error>
     </mat-form-field>
-      <button class="mat-raised-button" (click)="pushDevice()">Add device</button>
+      <button class="mat-raised-button" (click)="pushDevice()" style="margin-left: 10px">Add device</button>
   </form>
     </div>
     <div class="buttons">
-      <button mat-raised-button color="primary" class="btn"  [mat-dialog-close]="false"(click)="closeDialog()">Discard</button>
-      <button mat-raised-button color="primary" class="btn" [mat-dialog-close]="true" (click)="createRoom()">Create</button>
+      <button mat-raised-button color="primary" class="btn1"  [mat-dialog-close]="false"(click)="closeDialog()">Discard</button>
+      <button mat-raised-button color="primary" class="btn2" [mat-dialog-close]="true" (click)="createRoom()">{{okBtnText}}</button>
     </div>
   </mat-card-content>
 </mat-card>

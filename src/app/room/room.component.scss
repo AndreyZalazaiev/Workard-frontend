@@ -33,6 +33,9 @@
 .expandedContent{
   display: flex;
 }
+.recommendations{
+  margin: 10px;
+}
 .circle{
   height: 100%;
   width: 50%;
@@ -58,5 +61,6 @@
   height: 44px;
 }
 .text{
+  margin-top: 10px;
   font-family: 'Roboto', sans-serif;
 }

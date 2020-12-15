@@ -7,8 +7,12 @@
 
     <mat-nav-list>
       <div class="accountInfo">
-        <p mat-list-item>{{getUserName()}}</p>
-        <p mat-list-item>{{getUserEmail()}}</p>
+        <div mat-list-item>
+          <div class="accountDesc">
+            <mat-icon style=" vertical-align: -5px;">person</mat-icon>
+            {{'nav.loggedAs'|translate}}: {{getUserName()}}
+          </div>
+        </div>
       </div>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="login" *ngIf="!getUserName()">{{'nav.login'|translate}}</a>
@@ -17,19 +21,19 @@
       <a mat-list-item routerLink="/" *ngIf="getUserName()" (click)="clearAuthInfo()">{{'nav.logout'|translate}}</a>
     </mat-nav-list>
     <div class="langMenu">
-    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 10px" >
-      <mat-icon>language</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <img src="/assets/images/ukraine_flag.png" (click)="switchLang('uk')" class="mat-icon icon">
-        <span>Українська</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 10px">
+        <mat-icon>language</mat-icon>
       </button>
-      <button mat-menu-item>
-        <img src="/assets/images/europe_flag.png" (click)="switchLang('en')" class="mat-icon icon" >
-        <span>English</span>
-      </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <img src="/assets/images/ukraine_flag.png" (click)="switchLang('uk')" class="mat-icon icon">
+          <span>Українська</span>
+        </button>
+        <button mat-menu-item>
+          <img src="/assets/images/europe_flag.png" (click)="switchLang('en')" class="mat-icon icon">
+          <span>English</span>
+        </button>
+      </mat-menu>
     </div>
 
   </mat-sidenav>
