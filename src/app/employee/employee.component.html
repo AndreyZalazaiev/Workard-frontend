@@ -1,37 +1,44 @@
 <div class="main">
-<div class="baseInfo">
-  <div class="md-padding" layout="row" layout-fill layout-wrap layout-align="start start">
-  <md-list-item *ngFor="let employee of employees" draggable="true" flex-xs="100" flex-sm="50" flex-md="33"
-                flex-gt-md="25" class="md-3-line content" >
-    <div class="employees">
-    <img src="/assets/images/employee_icon.png" (click)="selectedEmployee=employee" class="md-avatar icon"/>
-    <div class="md-list-item-text">
-      <h3 class="employeeDesc"> {{employee.name}} </h3>
-      <h4 class="employeeRFID"> {{employee.rfidtag}} </h4>
-      <p class="employeeOccupation"> {{employee.occupation}} </p>
-    </div>
-    <md-divider md-inset></md-divider>
-    </div>
-  </md-list-item>
-  <img class="mat-icon icon" src="/assets/images/plus_icon.png" style="width: 40px;height: 40px;" (click)="createEmployee()">
-<div *ngIf="employees.length==0" class="noEmployeesCase"> No workers in a company, but you can add them now!</div>
-</div>
-</div>
-  <div class="stats" *ngIf="selectedEmployee && employees.length>0" >
+  <div class="baseInfo">
+    <div class="md-padding" layout="row" layout-fill layout-wrap layout-align="start start">
+      <h4>Pick worker:</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let employee of employees" [value]="employee.name"
+                      (click)="selectedEmployee=employee">{{employee.name}}
+            <img class="mat-icon icon" src="/assets/images/edit_icon.png" style="width: 30px;height: 30px;" (click)="updateEmployee(employee)">
+            <img class="mat-icon icon" src="/assets/images/delete_icon.png" style="width: 30px;height: 30px;" (click)="deleteEmployee(employee)">
+          </mat-option>
+        </mat-select>
 
-    <table class="table" >
+      </mat-form-field>
+
+      <div class="workerDesc" *ngIf="selectedEmployee && employees.length>0">
+        <p>{{selectedEmployee.occupation}}</p>
+        <p>{{selectedEmployee.rfidtag}}</p>
+      </div>
+      <p></p>
+      <img class="mat-icon icon" src="/assets/images/plus_icon.png" style="width: 40px;height: 40px;" (click)="createEmployee()">
+      <div *ngIf="employees.length==0" class="noEmployeesCase"> No workers in a company, but you can add them now!</div>
+    </div>
+  </div>
+  <div class="stats" *ngIf="selectedEmployee && employees.length>0">
+
+    <table class="table" *ngIf="selectedEmployee.visits.length>0">
       <thead class="black white-text head">
       <th *ngFor="let head of headElements" scope="col">{{head}}</th>
       </thead>
       <tbody>
-      <tr mdbTableCol *ngFor="let el of selectedEmployee.visits ;let i=index" >
-        <div *ngIf="i>selectedEmployee.visits.length-5 " >
-        <td >{{obtainRoomNameById(el.idRoom)}}</td>
-        <td>{{el.entryTime}}</td>
-        <td>{{el.exitTime}}</td>
+      <tr mdbTableCol *ngFor="let el of selectedEmployee.visits ;let i=index">
+        <div *ngIf="i>selectedEmployee.visits.length-5 ">
+          <td>{{obtainRoomNameById(el.idRoom)}}</td>
+          <td>{{el.entryTime}}</td>
+          <td>{{el.exitTime}}</td>
         </div>
       </tbody>
     </table>
-
+<img *ngIf="selectedEmployee.visits.length<=0" src="/assets/images/nodata.png">
   </div>
 </div>

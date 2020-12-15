@@ -10,10 +10,10 @@ export class Guard implements CanActivate {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('token').length > 0) {
+    if (localStorage.getItem('token')!=null) {
       return true;
     }
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl("/login");
     return false;
   }
 

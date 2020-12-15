@@ -11,13 +11,13 @@
         <p mat-list-item>{{getUserEmail()}}</p>
       </div>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="login" *ngIf="!getUserName()">{{'nav.menu'|translate}}</a>
+      <a mat-list-item routerLink="login" *ngIf="!getUserName()">{{'nav.login'|translate}}</a>
       <a mat-list-item routerLink="register" *ngIf="!getUserName()">{{'nav.register'|translate}}</a>
       <a mat-list-item routerLink="" *ngIf="getUserName()">{{'nav.company'|translate}}</a>
       <a mat-list-item routerLink="/" *ngIf="getUserName()" (click)="clearAuthInfo()">{{'nav.logout'|translate}}</a>
     </mat-nav-list>
     <div class="langMenu">
-    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 10px" aria-label="Example icon-button with a menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 10px" >
       <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">

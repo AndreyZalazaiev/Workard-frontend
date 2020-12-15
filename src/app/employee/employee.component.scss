@@ -18,8 +18,11 @@
 }
 
 .main{
-width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: -webkit-flex;
   display: flex;
+
 }
 .employeeDesc{
   font-family: 'Roboto', sans-serif;
@@ -33,12 +36,16 @@ width: 100%;
   font-family: 'Roboto', sans-serif;
 }
 .stats{
-  width: 76%;
 }
 .baseInfo{
-  width: 24%;
+  margin-right: 50px;
+  border-right: lightcoral;
 }
-
+.workerDesc{
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+  border: #aaaaaa 1px;
+}
 
 .table td, .table th {
   min-width: 100px;

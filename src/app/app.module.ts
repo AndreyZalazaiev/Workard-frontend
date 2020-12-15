@@ -39,6 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {TableModule} from 'ngx-easy-table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { EmployeeFormComponent } from './employee/employee-form/employee-form.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const appRoutes: Routes = [
@@ -87,6 +89,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatListModule,
     RouterModule,
     MatDialogModule,
+    MatSnackBarModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false, relativeLinkResolution: 'legacy'} // <-- debugging purposes only
@@ -117,6 +120,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule,
     TableModule,
     MatPaginatorModule,
+    MatChipsModule,
 
   ],
   providers: [],

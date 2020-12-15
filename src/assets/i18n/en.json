@@ -2,7 +2,7 @@
   "nav": {
     "main": "Main",
     "menu": "Menu",
-    "login":"Login",
+    "login": "Login",
     "register": "Register",
     "company": "Company",
     "logout": "Log out"
@@ -18,9 +18,11 @@
     "conDevices": "Connected devices code:",
     "Recommendations": "Recommendations",
     "Workers": "Workers",
-    "Rooms": "Rooms"
+    "Rooms": "Rooms",
+    "currentRecommend": "Current recommendations",
+    "noRecommend": "You haven't generated recommendations yet",
+    "generateBtn": "Generate"
   },
   "companyForm": {
-
   }
 }

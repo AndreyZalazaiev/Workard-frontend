@@ -16,8 +16,9 @@ export class AuthService {
   public login(data): Observable<any> {
     return this.http.post(`${baseUrl}/login`, data, {responseType: 'text'});
   }
-
-
+  public register(data): Observable<any> {
+    return this.http.post(`${baseUrl}/register`, data, {responseType: 'json'});
+  }
   public obtainProfile(): Observable<User> {
     const token = localStorage.getItem('token');
     if (token != null) {
