@@ -17,50 +17,61 @@
   text-align: center;
 
 }
-.mat-content{
+
+.mat-content {
   align-items: center;
 }
+
 .roomTitle {
   margin-top: 20px;
   margin-left: 15px;
-  font-family: Raleway , sans-serif !important;
+  font-family: Raleway, sans-serif !important;
   font-size: large;
 
 }
-.mat-accordion{
+
+.mat-accordion {
   width: 40%;
 }
-.expandedContent{
+
+.expandedContent {
   display: flex;
 }
-.recommendations{
+
+.recommendations {
   margin: 10px;
 }
-.circle{
+
+.circle {
   height: 100%;
   width: 50%;
   border: lightcoral 1px;
 }
-.devices{
+
+.devices {
   font-family: 'Roboto', sans-serif;
   height: 100%;
   width: 50%;
 }
-.employees{
+
+.employees {
   margin-left: 15px;
-  margin-top: 1rem ;
+  margin-top: 1rem;
 }
-.tools{
+
+.tools {
   width: 82%;
   align-items: end;
 }
-.icon{
+
+.icon {
   margin-left: 15px;
   margin-top: 1rem;
   width: 44px;
   height: 44px;
 }
-.text{
+
+.text {
   margin-top: 10px;
   font-family: 'Roboto', sans-serif;
 }

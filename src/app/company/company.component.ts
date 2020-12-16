@@ -53,9 +53,10 @@ export class CompanyComponent implements OnInit {
   delete(Company:Company) {
     this.confirm('Please confirm', 'Do you really want to delete ?')
       .then((confirmed) => {
-        if (confirmed) {
+        if (confirmed ) {
           this.companyService.deleteCompany(Company).subscribe(data => console.log(data));
           this.companies = this.companies.filter(c => c.id != Company.id);
+          this.roomComponent.selectedCompany=this.companies[0];
         }
       })
       .catch(() => console.log('User dismissed the dialog '));
@@ -69,15 +70,18 @@ export class CompanyComponent implements OnInit {
   }
 
   refresh(content) {
+    console.log("Invokation in company")
     this.companyService.getCompanies().subscribe(data => {
       this.companies = data;
       this.findRooms(this.roomComponent.selectedCompany.id);
+      this.roomComponent.selectedCompany=this.companies.filter(c=>c.id==this.roomComponent.selectedCompany.id)[0]
     });
 
   }
 
   ngOnInit(): void {
     this.loadCompanies();
+    console.log("Loading companies");
   }
 
   public confirm(

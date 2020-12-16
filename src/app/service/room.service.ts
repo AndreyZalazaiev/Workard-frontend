@@ -20,6 +20,7 @@ export class RoomService {
   }
 
   public deleteRoom(Room: Room) {
+    Room.visits=null;
     return this.http.request('delete',`${baseUrl}/room`,{body:Room, headers:this.header});
   }
   public getLang(){

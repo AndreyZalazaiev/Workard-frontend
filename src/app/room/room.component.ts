@@ -21,14 +21,14 @@ export class RoomComponent {
   @ViewChild(EmployeeComponent) employeeComp: EmployeeComponent;
   @Output() refreshCompanyData = new EventEmitter<String>();
 
-  constructor(private  dialog: MatDialog, private  roomService: RoomService,private companyService:CompanyService,private _snackBar:MatSnackBar) {
+  constructor(private  dialog: MatDialog, private  roomService: RoomService, private companyService: CompanyService, private _snackBar: MatSnackBar) {
   }
 
-  createRoomDialog(room:Room) {
+  createRoomDialog(room: Room) {
     let dialogRef = this.dialog.open(RoomFormComponent);
-    if(room!=null){
-      dialogRef.componentInstance.room=room;
-      dialogRef.componentInstance.title='Edit room';
+    if (room != null) {
+      dialogRef.componentInstance.room = room;
+      dialogRef.componentInstance.title = 'Edit room';
     }
     dialogRef.componentInstance.idCompany = this.selectedCompany.id;
     this.dialog.afterAllClosed.subscribe(() => this.refreshCompanyData.emit('Refresh'));
@@ -38,6 +38,10 @@ export class RoomComponent {
     this.roomService.deleteRoom(room).subscribe(() => {
       this.refreshCompanyData.emit('Delete');
     }, () => this.rooms = this.rooms.filter(r => r != room));
+  }
+
+  refresh(event) {
+    this.refreshCompanyData.emit('Delete');
   }
 
   findHotSpotbyIdRoom(idRoom) {
@@ -50,15 +54,18 @@ export class RoomComponent {
     }
     return 0;
   }
-  generateRecom(){
-    if(this.selectedCompany.recommendations.length==0)
-    this.companyService.generateRecom(this.selectedCompany).subscribe(data=>{
-      if(data.length==0){
-        this.openSnackBar("No data found")
-      }
-      this.selectedCompany.recommendations=data
-    });
+
+  generateRecom() {
+    if (this.selectedCompany.recommendations.length == 0) {
+      this.companyService.generateRecom(this.selectedCompany).subscribe(data => {
+        if (data.length == 0) {
+          this.openSnackBar('No data found');
+        }
+        this.selectedCompany.recommendations = data;
+      });
+    }
   }
+
   openSnackBar(text) {
     this._snackBar.open(text, '', {
       duration: 6000,

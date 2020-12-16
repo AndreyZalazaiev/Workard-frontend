@@ -16,7 +16,6 @@
 .noEmployeesCase{
 
 }
-
 .main{
   flex-wrap: wrap;
   flex-direction: row;
@@ -25,10 +24,12 @@
 
 }
 .employeeDesc{
+  margin-left: 5px;
   font-family: 'Roboto', sans-serif;
 }
 .employeeRFID{
   font-family: 'Roboto', sans-serif;
+  margin-left: 5px;
   background: cornflowerblue;
   color: #eeeeee;
 }

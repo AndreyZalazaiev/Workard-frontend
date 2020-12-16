@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Employee} from '../../domain/employee';
 import {Room} from '../../domain/room';
 import {CompanyFormComponent} from '../company/company-form/company-form.component';
@@ -19,6 +19,7 @@ export class EmployeeComponent implements OnInit {
   @Input('employees') employees: Employee[] = [];
   @Input('rooms') rooms: Room[] = [];
   @Input('idCompany') idCompany:number;
+  @Output() refreshCompanyData = new EventEmitter<String>();
   selectedEmployee: Employee;
 
   headElements = ['Room','Entry time','Exit time'];
@@ -33,21 +34,21 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  loadEmployees(){
-
+  refreshEmployees(){
+    this.refreshCompanyData.emit('Delete');
   }
 
   createEmployee() {
     var dialog=this.dialog.open(EmployeeFormComponent);
     dialog.componentInstance.idCompany=this.idCompany;
-    this.dialog.afterAllClosed.subscribe(data => this.loadEmployees());//not updating
+    this.dialog.afterAllClosed.subscribe(data => this.refreshEmployees());
   }
   updateEmployee(employee:Employee) {
     var dialog=this.dialog.open(EmployeeFormComponent);
     dialog.componentInstance.idCompany=this.idCompany;
     dialog.componentInstance.selectedEmployee=employee;
     dialog.componentInstance.title='Update employee';
-    this.dialog.afterAllClosed.subscribe(data => this.loadEmployees());//not updating
+    this.dialog.afterAllClosed.subscribe(data => this.refreshEmployees());
   }
   deleteEmployee(employee:Employee){
     this.confirm('Please confirm', 'Do you really want to delete ?')

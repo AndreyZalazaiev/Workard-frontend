@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {Routes, RouterModule, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {CompanyComponent} from '../company/company.component';
 
 @Component({
   selector: 'app-main-nav',
@@ -11,17 +12,14 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit {
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-
-
-
   getUserName(): string {
-    return localStorage.getItem('username')
+     let login =localStorage.getItem('username');
+    return  (login==null)?"guest":login
   }
   getUserEmail():string{
     return localStorage.getItem('email');

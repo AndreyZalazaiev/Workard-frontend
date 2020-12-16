@@ -17,7 +17,7 @@ export class RoomFormComponent implements OnInit {
   deviceForm: FormGroup;
   idCompany: number;
   createdCompany: Company;
-  okBtnText:string;
+  okBtnText: string;
   room: Room;
   title: string = 'Create new room';
 
@@ -33,13 +33,15 @@ export class RoomFormComponent implements OnInit {
     this.deviceForm = new FormGroup({
       deviceCode: new FormControl('')
     });
-    this.formGroup.controls['roomName'].setValue(this.room.name);
-    this.formGroup.controls['roomSize'].setValue(this.room.recommendedValue);
-    if(this.room){
-      this.okBtnText="Update";
+    if (this.room) {
+      this.formGroup.controls['roomName'].setValue(this.room.name);
+      this.formGroup.controls['roomSize'].setValue(this.room.recommendedValue);
     }
-    else
-      this.okBtnText="Create";
+    if (this.room) {
+      this.okBtnText = 'Update';
+    } else {
+      this.okBtnText = 'Create';
+    }
   }
 
   closeDialog() {

@@ -49,7 +49,8 @@
   </mat-tab>
   <mat-tab label="{{'rooms.Workers'|translate}}">
     <div class="employees">
-      <app-employee *ngIf="selectedCompany" [employees]="selectedCompany.employees" [rooms]="rooms"
+      <app-employee (refreshCompanyData)="refresh($event)" *ngIf="selectedCompany"
+                    [employees]="selectedCompany.employees" [rooms]="rooms"
                     [idCompany]="selectedCompany.id"></app-employee>
     </div>
   </mat-tab>
